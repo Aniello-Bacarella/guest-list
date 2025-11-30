@@ -1,11 +1,11 @@
 export default function GuestDetails({ guest, onBack }) {
   return (
     <div>
-      <h2>{details.name}</h2>
-      <p>Email: {details.email}</p>
-      <p>Phone: {details.phone}</p>
-      <p>Job: {details.job}</p>
-      <p>Bio: {details.bio}</p>
+      <h2>{guest.name}</h2>
+      <p>Email: {guest.email}</p>
+      <p>Phone: {guest.phone}</p>
+      <p>Job: {guest.job}</p>
+      <p>Bio: {guest.bio}</p>
       <button onClick={onBack}>Back</button>
     </div>
   );

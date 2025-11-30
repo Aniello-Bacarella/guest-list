@@ -12,8 +12,23 @@ const placeholderGuests = [
 export default function App() {
   const [guests, setGuests] = useState([]);
   const [selectedGuest, setSelectedGuest] = useState(null);
-  const [lodaing, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function loadGuests() {
+      try {
+        setLoading(true);
+        const data = await fetchGuests();
+        setGuests(data.guests);
+      } catch (err) {
+        setError("failed to load guests.");
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadGuests();
+  }, []);
 
   return (
     <div>

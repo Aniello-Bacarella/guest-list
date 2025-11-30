@@ -1,4 +1,8 @@
 export default function GuestList({ guests, onSelect }) {
+  console.log("Guests prop:", guests);
+  if (!guests || guests.length === 0) {
+    return <p>No guests found.</p>;
+  }
   return (
     <ul>
       {guests.map((guest) => (

@@ -20,7 +20,8 @@ export default function App() {
       try {
         setLoading(true);
         const data = await fetchGuests();
-        setGuests(data.guests);
+        console.log("API response:", data);
+        setGuests(response.data);
       } catch (err) {
         setError("failed to load guests.");
       } finally {
@@ -29,6 +30,18 @@ export default function App() {
     }
     loadGuests();
   }, []);
+
+  async function handleSelect(guest) {
+    try {
+      setLoading(true);
+      const data = await fetchGuestDetails(guest.id);
+      setSelectedGuest(response.data);
+    } catch (err) {
+      setError("failedt to load guest details.");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div>
@@ -39,7 +52,7 @@ export default function App() {
           onBack={() => setSelectedGuest(null)}
         />
       ) : (
-        <GuestList guests={guests} onSelect={setSelectedGuest} />
+        <GuestList guests={guests} onSelect={handleSelect} />
       )}
     </div>
   );

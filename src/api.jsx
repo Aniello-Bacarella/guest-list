@@ -9,6 +9,7 @@ export async function fetchGuests() {
 }
 
 export async function fetchGuestDetails(id) {
-  const data = await fetchGuestDetails(guests.id);
-  setSelectedGuest(data.guest);
+  const res = await fetch(`${API}/guests/${id}`);
+  const data = await res.json();
+  return data;
 }

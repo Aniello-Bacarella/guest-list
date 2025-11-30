@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GuestList from "./GuestList.jsx";
 import GuestDetails from "./GuestDetails.jsx";
 import { fetchGuests, fetchGuestDetails } from "./api.jsx";

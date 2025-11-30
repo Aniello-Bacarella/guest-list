@@ -19,8 +19,8 @@ export default function App() {
     async function loadGuests() {
       try {
         setLoading(true);
-        const data = await fetchGuests();
-        console.log("API response:", data);
+        const response = await fetchGuests();
+        console.log("API response:", response);
         setGuests(response.data);
       } catch (err) {
         setError("failed to load guests.");
@@ -34,10 +34,10 @@ export default function App() {
   async function handleSelect(guest) {
     try {
       setLoading(true);
-      const data = await fetchGuestDetails(guest.id);
+      const response = await fetchGuestDetails(guest.id);
       setSelectedGuest(response.data);
     } catch (err) {
-      setError("failedt to load guest details.");
+      setError("failed to load guest details.");
     } finally {
       setLoading(false);
     }
